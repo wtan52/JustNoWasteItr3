@@ -9981,3 +9981,19 @@ img:hover {
     transform: translateX(-50%);
 }
 
+
+td#yellow {
+    background-color: yellow;
+    color: black;
+}
+
+td#green {
+    background-color: green;
+    color: white;
+}
+
+td#red {
+    background-color: darkred;
+    color: white;
+}
+

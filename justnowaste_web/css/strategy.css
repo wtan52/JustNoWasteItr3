@@ -1,0 +1,18 @@
+h1#stategy {
+    text-align: justify;
+    /* text-decoration-color: black; */
+}
+
+.website{
+    font-weight: bold;
+}
+
+
+span#address, span#suburb, span#website{
+    font-family: "Nunito Sans", Arial, sans-serif;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #666666;
+}

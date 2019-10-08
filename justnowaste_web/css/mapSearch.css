@@ -27,3 +27,13 @@ th {
     margin-top: 15%;
 }
 
+
+td#comp-name {
+    width: 100vw;
+}
+
+@media (max-width: 991px)
+.pb_form_v1 {
+    padding: 30px;
+    width: 93vw;
+}

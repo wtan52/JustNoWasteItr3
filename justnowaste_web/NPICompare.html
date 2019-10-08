@@ -5,7 +5,7 @@
     <title>Just No Wate - The Future is here</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" href="images/world.jpg" type="image/icon type">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -46,10 +46,10 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="Statistics.html" class="nav-link">Statistics</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
+                    <li class="nav-item"><a href="test_yourself.html" class="nav-link">Quiz</a></li>
                     <li class="nav-item"><a href="comingSoon.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="comingSoon.html" class="nav-link">Contact</a></li>
                 </ul>
@@ -57,22 +57,43 @@
         </div>
     </nav>
     <!-- END nav -->
-
+    
     <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
         <div class="container-fluid d-flex h-100">
             <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6" id="table-container">
-                <h1 id="company_name" style="text-align: center"></h1>
+                <h1 id="company_name" style="text-align: center; padding-top: 100px;"></h1>
+
+
+                <div id="legends" class="d-flex justify-content-between">
+                    <div>
+
+                        <p><img id="codes" style="width: 30px; height: 30px;" src="/images/rounded-green-square-shape.svg" alt="green">
+                        - Good</p>
+                    </div>
+                    <div>
+                        <p><img id="codes" style="width: 30px; height: 30px;" src="/images/rounded-yellow-square-shape.svg" alt="yellow">
+                        - Average</p>
+                    </div>
+                    <div>
+                        <p><img id="codes" style="width: 30px; height: 30px;" src="/images/rounded-red-square-shape.svg" alt="red">
+                        - Need to Improve</p>
+                    </div>
+                </div>
+
+
+                <br />
                 <table class="table table-striped table-dark">
                     <thead class="text-center" id="results-heading">
                         <tr>
                             <th scope="col">Substances Emitted by this facility</th>
                             <th scope="col">Category</th>
+                            <th scope="col">Substance Trend</th>
                         </tr>
                     </thead>
                     <tbody class="text-center" id="results"></tbody>
                 </table>
                 <div class="form-group text-center">
-                    <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='/index.html'">Search Again</button>
+                    <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='/'">Search Again</button>
                 </div>
                 <div class="form-group text-left">
                     <p>ANZSIC code is part of NPI reporting requirements and NPI has below six categories</p>

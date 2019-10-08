@@ -1,58 +1,84 @@
-// Data base Fetch
-const url = 'https://raw.githubusercontent.com/balajimohan28/JustNoWasteDataSet/master/substance_impacts.json';
-//const url = 'https://just-no-waste.s3-ap-southeast-2.amazonaws.com/substance_impacts.json';
-fetch(url)
-    .then(res => res.json())
-    .then(function (data) {
+function substances(facility_id) {
 
-        var currentLocation = window.location;
+    var xhttp = new XMLHttpRequest();
 
-        var url = new URL(currentLocation);
-        var substance_name = url.searchParams.get("substance_name");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
 
-        var current_substance_name_arr = substance_name.split(',');
+            var JSONData = JSON.parse(this.responseText);
 
-        for (var i = 0; i < current_substance_name_arr.length; i++) {
-            for (var j = 0; j < data.length; j++) {
-                var final_filter = data.filter(element => element.A == current_substance_name_arr[i])
-            }
+            console.log(JSONData);
+            
+            var facility_details = JSONData.facility;
+            var substance_impact = JSONData.substance_impacts;
+            
+            
+            
+            var substance_name = facility_details[0].substance_name;
 
-            if (final_filter[0] != null) {
+            var currentLocation = window.location;
 
+            var url = new URL(currentLocation);
+            var company_name = url.searchParams.get("company_name");
 
+            document.getElementById("company_name").innerHTML = company_name;
 
-                console.log(final_filter[0].A);
-                console.log(final_filter[0].B);
-                var sName = final_filter[0].A;
-                var iName = final_filter[0].B;
+            var current_substance_name_arr = substance_name.split(',');
 
-                var results = document.getElementById('results');
-                var tr = document.createElement('tr');
+            for (var i = 0; i < current_substance_name_arr.length; i++) {
+                for (var j = 0; j < substance_impact.length; j++) {
+                    var final_filter = substance_impact.filter(element => element.A == current_substance_name_arr[i])
+                }
 
-                var subtance_name_td = document.createElement('td');
-                var impact_td = document.createElement('td');
+                if (final_filter[0] != null) {
 
+                    var sName = final_filter[0].A;
+                    var iName = final_filter[0].B;
 
-                var subtance_name = document.createTextNode(sName);
-                var impact_name = document.createTextNode(iName);
+                    var results = document.getElementById('results');
+                    var tr = document.createElement('tr');
 
-                subtance_name_td.appendChild(subtance_name);
-                impact_td.appendChild(impact_name);
-                
-
-                tr.appendChild(subtance_name_td);
-                tr.appendChild(impact_td);
-
-                results.appendChild(tr);
+                    var subtance_name_td = document.createElement('td');
+                    var impact_td = document.createElement('td');
 
 
+                    var subtance_name = document.createTextNode(sName);
+                    var impact_name = document.createTextNode(iName);
 
+                    subtance_name_td.appendChild(subtance_name);
+                    impact_td.appendChild(impact_name);
+
+
+                    tr.appendChild(subtance_name_td);
+                    tr.appendChild(impact_td);
+
+                    results.appendChild(tr);
+
+                }
             }
         }
 
+    }
+    xhttp.open("GET", "/facility_details?facility_id=" + facility_id, true);
+    xhttp.send();
+}
 
 
-    })
-    .catch(function (e) {
-        console.log("Error:", e);
-    });
+function viewStrategy() {
+
+    var currentLocation = window.location;
+
+    var url = new URL(currentLocation);
+    var facility_id = url.searchParams.get("facility_id");
+    var company_name = url.searchParams.get("company_name");
+
+    window.location.href = "Strategy.html?facility_id=" + facility_id + "&company_name=" + company_name + "#StrategyInfoSection";
+}
+
+
+var currentLocation = window.location;
+
+var url = new URL(currentLocation);
+var facility_id = url.searchParams.get("facility_id");
+var company_name = url.searchParams.get("company_name");
+substances(facility_id);

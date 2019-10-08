@@ -1,19 +1,37 @@
-function addResult(substance_name, category) {
+function addResult(substance_name, category, colour, i, facility_id) {
     var results = document.getElementById('results');
 
     var tr = document.createElement('tr');
 
     var nameTd = document.createElement('td');
     var categoryTd = document.createElement('td');
+    var reportTd = document.createElement('td');
+    nameTd.setAttribute("id", colour);
+    categoryTd.setAttribute("id", colour);
+    reportTd.setAttribute("id", colour);
 
     var name = document.createTextNode(substance_name);
     var category = document.createTextNode(category);
+    var report = document.createElement("BUTTON");
+
+    report.innerHTML = "View";
+    report.id = i;
+    report.onclick = function () {
+        window.location.href = "TrendGraph.html?facility_id=" + facility_id +"&substance="+ substance_name + "#emission_compare";
+    };
+
+
+
     nameTd.appendChild(name);
     categoryTd.appendChild(category);
+    reportTd.appendChild(report);
+
+
     tr.appendChild(nameTd);
     tr.appendChild(categoryTd);
-    results.appendChild(tr);
+    tr.appendChild(reportTd);
 
+    results.appendChild(tr);
 }
 
 function clearResults() {
@@ -24,44 +42,72 @@ function clearResults() {
 }
 
 
-// Data base Fetch
-const url = 'https://raw.githubusercontent.com/balajimohan28/JustNoWasteDataSet/master/facility_NPI.json';
-fetch(url)
-    .then(res => res.json())
-    .then(function (datas) {
+function NPICompare(facility_id) {
 
-        var currentLocation = window.location;
+    var xhttp = new XMLHttpRequest();
 
-        var url = new URL(currentLocation);
-        var facility_id = url.searchParams.get("facility_id");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
 
-        var facility_Data = datas.facility;
-        var NPI_Data = datas.NPI;
-        
+            var datas = JSON.parse(this.responseText);
 
-        var facility_filter = facility_Data.filter(element => element.facility_id == facility_id)
+            console.log(datas);
 
-        document.getElementById("company_name").innerHTML = facility_filter[0].facility_name;
+            var facility_Data = datas.facility;
+            var NPI_Data = datas.NPI;
 
-        var name = facility_filter[0].substance_name;
-        var substance_arr = name.split(',');
 
-        var NPI_arr = [];
+            var facility_filter = facility_Data.filter(element => element.facility_id == facility_id)
 
-        for (var i = 0; i < substance_arr.length; i++) {
-            for (var j = 0; j < NPI_Data.length; j++) {
-                var NPI_filter = NPI_Data.filter(element => element.A == substance_arr[i])
+            document.getElementById("company_name").innerHTML = facility_filter[0].facility_name;
+
+            var name = facility_filter[0].substance_name;
+            var substance_arr = name.split(',');
+
+            var NPI_arr = [];
+            var colour;
+            const sortAlphaNum = (a, b) => a.localeCompare(b, 'en', {
+                numeric: true
+            })
+
+            for (var i = 0; i < substance_arr.length; i++) {
+                for (var j = 0; j < NPI_Data.length; j++) {
+                    var NPI_filter = NPI_Data.filter(element => element.A == substance_arr[i])
+                }
+                for (var k = 0; k < NPI_filter.length; k++) {
+                    NPI_arr.push(NPI_filter[k].B);
+                }
+                var unique = NPI_arr.filter((item, i, ar) => ar.indexOf(item) === i);
+
+                unique = unique.sort(sortAlphaNum);
+
+                for (var c = 0; c < unique.length; c++) {
+                    if (unique[c] == "1" || unique[c] == "1a" || unique[c] == "1b") {
+
+                        colour = "green";
+
+                    } else if (unique[c] == "2a" || unique[c] == "2b") {
+                        colour = "yellow";
+
+                    } else if (unique[c] == "3") {
+                        colour = "red";
+                    } else {
+                        colour = "yellow";
+                    }
+                }
+
+                addResult(substance_arr[i], unique, colour , i, facility_id);
             }
-            for (var k = 0; k < NPI_filter.length; k++) {
-                NPI_arr.push(NPI_filter[k].B);
-            }
-            var unique = NPI_arr.filter((item, i, ar) => ar.indexOf(item) === i);
 
-            addResult(substance_arr[i], unique);
+
         }
 
+    }
+    xhttp.open("GET", "/NPICompare?facility_id=" + facility_id, true);
+    xhttp.send();
+}
 
-    })
-    .catch(function (e) {
-        console.log("Error:", e);
-    });
+var currentLocation = window.location;
+var url = new URL(currentLocation);
+var facility_id = url.searchParams.get("facility_id");
+NPICompare(facility_id);

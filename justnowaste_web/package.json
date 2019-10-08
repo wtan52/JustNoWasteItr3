@@ -1,0 +1,25 @@
+{
+  "name": "facility_monitor-it3",
+  "version": "1.0.0",
+  "description": "Just No Waste IT-3",
+  "main": "DBConnection.js",
+  "dependencies": {
+    "mysql": "^2.17.1",
+    "node": "^12.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balajimohan28/Facility_Monitor-IT3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balajimohan28/Facility_Monitor-IT3/issues"
+  },
+  "homepage": "https://github.com/balajimohan28/Facility_Monitor-IT3#readme"
+}
