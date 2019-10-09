@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    function TrendGraph(facility_id) {
+    function TrendGraph(facility_id, year_dropdown) {
+
+        console.log(year_dropdown);
 
         var xhttp = new XMLHttpRequest();
 
@@ -10,6 +12,7 @@ $(document).ready(function () {
 
 
                 console.log(JSONData);
+
 
                 var years = [];
 
@@ -27,6 +30,18 @@ $(document).ready(function () {
                 var timeList = years.map(function (obj) {
                     return obj;
                 });
+
+                if (year_dropdown == 0) {
+                    for (var l = 0; l < timeList.length; l++) {
+
+                        var select = document.getElementById('year');
+                        var option = document.createElement("option");
+                        option.text = timeList[l];
+                        option.value = timeList[l];
+                        select.appendChild(option);
+                    }
+                }
+
 
                 var air_point_emission_list = JSONData.map(function (obj) {
                     return obj.air_point_emission_kg;
@@ -47,12 +62,35 @@ $(document).ready(function () {
                 var land_emission_list = JSONData.map(function (obj) {
                     return obj.land_emission_kg;
                 });
-                
+
                 console.log(air_point_emission_list);
                 console.log(air_fugitive_emission_list);
                 console.log(air_total_emission_list);
                 console.log(water_emission_list);
                 console.log(land_emission_list);
+
+                if (year_dropdown == 0) {
+
+                } else {
+
+                    var temp_year = parseInt(year_dropdown) + 1;
+
+                    var year_build = year_dropdown + "/" + temp_year;
+
+                    var year_record = JSONData.filter(function(obj){
+                        
+                           return obj.report_year === year_build; 
+                    });
+                    
+                    console.log("year_record:", year_record);
+                    
+                    
+                    var build_pie_data = [year_record[0].air_point_emission_kg,year_record[0].air_fugitive_emission_kg,year_record[0].air_total_emission_kg,year_record[0].water_emission_kg,year_record[0].land_emission_kg];
+                    
+                    console.log("pie_data:",build_pie_data);
+
+
+                }
 
                 var chartColors = {
                     red: 'rgb(255, 99, 132)',
@@ -96,7 +134,7 @@ $(document).ready(function () {
                             borderColor: chartColors.purple,
                             data: water_emission_list,
                         }, {
-                            label: "Land Emission List",
+                            label: "Land Emission",
                             fill: false,
                             backgroundColor: chartColors.grey,
                             borderColor: chartColors.grey,
@@ -138,41 +176,16 @@ $(document).ready(function () {
                 var configPie = {
                     type: 'pie',
                     data: {
-                        labels: timeList,
+                        labels: ["Air Point Emission", "Air Fugitive Emission", "Air Total Emission", "Water Emission", "Land Emission"],
                         datasets: [{
-                            label: "Air Point Emission",
-                            backgroundColor: chartColors.red,
-                            borderColor: chartColors.red,
-                            data: air_point_emission_list,
-                            fill: false,
-                        }, {
-                            label: "Air Fugitive Emission",
-                            fill: false,
-                            backgroundColor: chartColors.blue,
-                            borderColor: chartColors.blue,
-                            data: air_fugitive_emission_list,
-                        }, {
-                            label: "Air Total Emission",
-                            fill: false,
-                            backgroundColor: chartColors.yellow,
-                            borderColor: chartColors.yellow,
-                            data: air_total_emission_list,
-                        }, {
-                            label: "Water Emission",
-                            fill: false,
-                            backgroundColor: chartColors.purple,
-                            borderColor: chartColors.purple,
-                            data: water_emission_list,
-                        }, {
-                            label: "Land Emission List",
-                            fill: false,
-                            backgroundColor: chartColors.grey,
-                            borderColor: chartColors.grey,
-                            data: land_emission_list,
-                        }]
+                            label: "Population (millions)",
+                            backgroundColor: [chartColors.red, chartColors.blue, chartColors.green, chartColors.yellow, chartColors.grey],
+                            data: build_pie_data
+      }]
                     },
                     options: {
                         title: {
+                            responsive: true,
                             display: true,
                             text: 'Predicted world population (millions) in 2050'
                         }
@@ -180,11 +193,13 @@ $(document).ready(function () {
                 };
 
 
-                var ctx = document.getElementById("canvas").getContext("2d");
-                window.myLine = new Chart(ctx, config);
 
                 var ctx_pie = document.getElementById("pie-chart").getContext("2d");
                 window.myLine = new Chart(ctx_pie, configPie);
+
+
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx, config);
 
 
 
@@ -195,10 +210,20 @@ $(document).ready(function () {
         xhttp.send();
     }
 
+
     var currentLocation = window.location;
     var url = new URL(currentLocation);
     var facility_id = url.searchParams.get("facility_id");
 
-    TrendGraph(facility_id);
+    var year_dropdown = 0;
+
+    $('select').on('change', function () {
+        year_dropdown = this.value;
+        // alert(year_dropdown);
+        TrendGraph(facility_id, year_dropdown);
+    });
+
+    TrendGraph(facility_id, year_dropdown);
+
 
 });
