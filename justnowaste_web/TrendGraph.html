@@ -33,9 +33,11 @@
     <link rel="stylesheet" href="css/search.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
+<!--
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -46,7 +48,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="Statistics.html" class="nav-link">Statistics</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
                     <li class="nav-item"><a href="test_yourself.html" class="nav-link">Quiz</a></li>
@@ -56,15 +58,20 @@
             </div>
         </div>
     </nav>
+-->
     <!-- END nav -->
-    
+
     <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
-        <div class="container-fluid d-flex h-100">
-            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6" id="table-container">
-
-
-            </div>
+        <div class="d-flex justify-content-between">
+                    <div class="col-lg-6">
+                        <canvas id="canvas" width="800" height="350"></canvas>
+                    </div>
+                
+                    <div class="col-lg-6">
+                        <canvas id="pie-chart" width="800" height="350"></canvas>
+                    </div>
         </div>
+
     </section>
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -73,9 +80,9 @@
 
 
 
-    <!--    <script src="js/jquery.min.js"></script>-->
+    <script src="js/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
     <!--    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>-->
 
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -92,8 +99,10 @@
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <!--    <script src="js/search.js"></script>-->
-    <script src="js/NPICompare.js"></script>
+    <script src="js/TrendGraph.js"></script>
+
 </body>
 
 </html>

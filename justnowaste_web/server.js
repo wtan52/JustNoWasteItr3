@@ -604,7 +604,7 @@ const server = http.createServer((req, res) => {
         fs.createReadStream('./test_yourself.html').pipe(res);
     }
     
-    //Trend graph   TrendGraph
+    //Trend graph   TrendGraph TrendGraph  TrendGraph
     else if (req.method == 'GET' && req.url == '/TrendGraph.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
@@ -613,6 +613,32 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./TrendGraph.html').pipe(res);
+    }else if (req.method == 'GET' && req.url == '/js/TrendGraph.js') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/javascript');
+        fs.createReadStream('./js/TrendGraph.js').pipe(res);
+    } else if (req.method == 'GET' && pathname == '/TrendGraph' && current_url.query != null) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+
+        var queries = getJsonFromUrl(current_url.search);
+        var facility_ids = queries.facility_id;
+        var conn = con.getConnection();
+        
+        var TrendGraph;
+
+        conn.query('SELECT * FROM industriesdb.emissions Where facility_id = ? group by report_year', [facility_ids], function (error, results, fields) {
+            if (error) throw error;
+            
+            TrendGraph = JSON.stringify(results);
+
+            res.write(TrendGraph);
+            res.end();
+
+        });
+
+        conn.end();
+
     }
 
 

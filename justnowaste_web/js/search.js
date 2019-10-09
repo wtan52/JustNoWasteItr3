@@ -77,6 +77,8 @@ function facilitySearch(facility_id) {
          document.getElementById("anzsic-code").innerHTML = JSONData[0].primary_anzsic_class_code;
          document.getElementById("anzsic-name").innerHTML = JSONData[0].primary_anzsic_class_name;
          document.getElementById("reports-submitted").innerHTML = JSONData[0].reports;
+         var a = document.getElementById("dashboard");
+            a.href = "TrendGraph.html?facility_id=" + facility_id;
             
         var total_land_waste_amount = formatNumber(Math.round(JSONData[0].Total_Land_Waste_Amount)) + " Kg";
         var total_air_point_waste_amount = formatNumber(Math.round(JSONData[0].Total_Air_Point_Waste_Amount)) + " Kg";
