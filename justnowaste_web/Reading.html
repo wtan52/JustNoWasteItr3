@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="images/world.jpg" type="image/icon type">
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/animate.css">
@@ -33,10 +33,16 @@
     <link rel="stylesheet" href="css/search.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/classification.css">
+    <style>
+        body {
+            background-image: url('images/industry-street-unsplash.jpg');
+            background-color: #cccccc;
+        }
+
+    </style>
 </head>
 
-<body>
+<body style="background-image: ">
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -48,9 +54,9 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Statistics</a></li>
+                    <li class="nav-item active"><a href="Statistics.html" class="nav-link">Statistics</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="test_yourself.html" class="nav-link">Quiz</a></li>
+                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="comingSoon.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="comingSoon.html" class="nav-link">Contact</a></li>
                 </ul>
@@ -60,53 +66,12 @@
     <!-- END nav -->
 
 
-    <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
-        <div class="container-fluid d-flex h-100">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="table-container">
-                <div id="heading" style="text-align: -webkit-center;">
+    <section class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
 
 
-                    <div id="quiz" style="text-align: center">
-
-                        <div id="interact-5d9e925fb7e6de0014caae4f"></div>
-                        <script type="text/javascript">
-                            var app_5d9e925fb7e6de0014caae4f;
-                            (function(d, t) {
-                                var s = d.createElement(t),
-                                    options = {
-                                        "appId": "5d9e925fb7e6de0014caae4f",
-                                        "width": "1000",
-                                        "height": "1000",
-                                        "async": true,
-                                        "host": "quiz.tryinteract.com",
-                                        "auto_resize": false,
-                                        "footer": "show"
-                                    };
-                                s.src = 'https://i.tryinteract.com/embed/app.js';
-                                s.onload = s.onreadystatechange = function() {
-                                    var rs = this.readyState;
-                                    if (rs)
-                                        if (rs != 'complete')
-                                            if (rs != 'loaded') return;
-                                    try {
-                                        app_5d9e925fb7e6de0014caae4f = new InteractApp();
-                                        app_5d9e925fb7e6de0014caae4f.initialize(options);
-                                        app_5d9e925fb7e6de0014caae4f.display();
-                                    } catch (e) {}
-                                };
-                                var scr = d.getElementsByTagName(t)[0],
-                                    par = scr.parentNode;
-                                par.insertBefore(s, scr);
-                            })(document, 'script');
-
-                        </script>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </section>
+
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -134,7 +99,6 @@
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/classification.js"></script>
 </body>
 
 </html>

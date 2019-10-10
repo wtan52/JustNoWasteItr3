@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    function TrendGraph(facility_id, year_dropdown) {
+    function TrendGraph(facility_id, year_dropdown, change) {
 
         console.log(year_dropdown);
 
@@ -31,6 +31,8 @@ $(document).ready(function () {
                     return obj;
                 });
 
+                var first;
+
                 if (year_dropdown == 0) {
                     for (var l = 0; l < timeList.length; l++) {
 
@@ -39,6 +41,9 @@ $(document).ready(function () {
                         option.text = timeList[l];
                         option.value = timeList[l];
                         select.appendChild(option);
+                        if (l == 0) {
+                            first = option.value;
+                        }
                     }
                 }
 
@@ -62,14 +67,59 @@ $(document).ready(function () {
                 var land_emission_list = JSONData.map(function (obj) {
                     return obj.land_emission_kg;
                 });
+                //
+                //                console.log(air_point_emission_list);
+                //                console.log(air_fugitive_emission_list);
+                //                console.log(air_total_emission_list);
+                //                console.log(water_emission_list);
+                //                console.log(land_emission_list);
 
-                console.log(air_point_emission_list);
-                console.log(air_fugitive_emission_list);
-                console.log(air_total_emission_list);
-                console.log(water_emission_list);
-                console.log(land_emission_list);
+                var substance_array = [];
+
+                var substance_count = [];
+                var substance_list = [],
+
+                    sortedArr = [],
+                    count = 1;
+
+                for (var sub = 0; sub < JSONData.length; sub++) {
+                    substance_list.push(JSONData[sub].substance_name);
+
+                }
+
+                var substance_unique_list = [...new Set(substance_list)];
+
+                sortedArr = substance_list.sort();
+
+                for (var i = 0; i < sortedArr.length; i = i + count) {
+                    count = 1;
+                    for (var j = i + 1; j < sortedArr.length; j++) {
+                        if (sortedArr[i] === sortedArr[j])
+                            count++;
+                    }
+                    substance_array.push(sortedArr[i]);
+                    substance_count.push(count);
+
+//                    console.log("arr",substance_array);
+//                    console.log("arr_count",substance_count);
+                }
+
 
                 if (year_dropdown == 0) {
+
+                    document.getElementById("year").value = document.getElementById("year")[1].value;
+
+                    var temp_year = parseInt(first) + 1;
+
+                    var year_build = parseInt(first) + "/" + temp_year;
+
+                    var year_record = JSONData.filter(function (obj) {
+
+                        return obj.report_year === year_build;
+                    });
+
+                    var build_pie_data = [year_record[0].air_point_emission_kg, year_record[0].air_fugitive_emission_kg, year_record[0].air_total_emission_kg, year_record[0].water_emission_kg, year_record[0].land_emission_kg];
+
 
                 } else {
 
@@ -77,20 +127,17 @@ $(document).ready(function () {
 
                     var year_build = year_dropdown + "/" + temp_year;
 
-                    var year_record = JSONData.filter(function(obj){
-                        
-                           return obj.report_year === year_build; 
-                    });
-                    
-                    console.log("year_record:", year_record);
-                    
-                    
-                    var build_pie_data = [year_record[0].air_point_emission_kg,year_record[0].air_fugitive_emission_kg,year_record[0].air_total_emission_kg,year_record[0].water_emission_kg,year_record[0].land_emission_kg];
-                    
-                    console.log("pie_data:",build_pie_data);
+                    var year_record = JSONData.filter(function (obj) {
 
+                        return obj.report_year === year_build;
+                    });
+
+                    var build_pie_data = [year_record[0].air_point_emission_kg, year_record[0].air_fugitive_emission_kg, year_record[0].air_total_emission_kg, year_record[0].water_emission_kg, year_record[0].land_emission_kg];
 
                 }
+
+                console.log(build_pie_data);
+                console.log(substance_unique_list);
 
                 var chartColors = {
                     red: 'rgb(255, 99, 132)',
@@ -187,21 +234,60 @@ $(document).ready(function () {
                         title: {
                             responsive: true,
                             display: true,
-                            text: 'Predicted world population (millions) in 2050'
+                            text: 'Different type of Emissions by this Industry'
                         }
                     }
                 };
 
+                var configDoghnut = {
+                    type: 'doughnut',
+                    data: {
+                        labels: substance_array,
+                        datasets: [
+                            {
+                                label: "Population (millions)",
+                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                data: substance_count
+        }
+      ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Different type of substances emitted by this Industry'
+                        }
+                    }
+                };
 
+//                var configPolar = {
+//                    type: 'polarArea',
+//                    data: {
+//                        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+//                        datasets: [{
+//                            label: "Population (millions)",
+//                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+//                            data: [2478, 5267, 734, 784, 433]
+//                            }]
+//                    },
+//                    options: {
+//                        title: {
+//                            display: true,
+//                            text: 'Predicted world population (millions) in 2050'
+//                        }
+//                    }
+//                };
 
                 var ctx_pie = document.getElementById("pie-chart").getContext("2d");
                 window.myLine = new Chart(ctx_pie, configPie);
 
-
                 var ctx = document.getElementById("canvas").getContext("2d");
                 window.myLine = new Chart(ctx, config);
 
+//                var ctx_polar = document.getElementById("polar-chart").getContext("2d");
+//                window.myLine = new Chart(ctx_polar, configPolar);
 
+                var ctx_doughnut = document.getElementById("doughnut-chart").getContext("2d");
+                window.myLine = new Chart(ctx_doughnut, configDoghnut);
 
             }
 
@@ -220,10 +306,10 @@ $(document).ready(function () {
     $('select').on('change', function () {
         year_dropdown = this.value;
         // alert(year_dropdown);
-        TrendGraph(facility_id, year_dropdown);
+        TrendGraph(facility_id, year_dropdown, 1);
     });
 
-    TrendGraph(facility_id, year_dropdown);
+    TrendGraph(facility_id, year_dropdown, 0);
 
 
 });

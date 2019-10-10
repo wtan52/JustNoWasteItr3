@@ -153,6 +153,10 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/jpg');
         fs.createReadStream('./images/find-place1.jpg').pipe(res);
+    }else if (req.method == 'GET' && req.url == '/images/wind-mill.jpg') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'image/jpg');
+        fs.createReadStream('./images/wind-mill.jpg').pipe(res);
     } else if (req.method == 'GET' && req.url == '/images/airwaste.jpg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/jpg');
@@ -640,6 +644,21 @@ const server = http.createServer((req, res) => {
         conn.end();
 
     }
+    
+    //Reading
+    else if (req.method == 'GET' && req.url == '/Reading.html') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./Reading.html').pipe(res);
+    }else if (req.method == 'GET' && pathname == '/Reading.html') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./Reading.html').pipe(res);
+    }else if (req.method == 'GET' && req.url == '/js/Reading.js') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/javascript');
+        fs.createReadStream('./js/Reading.js').pipe(res);
+    } 
 
 
 });
