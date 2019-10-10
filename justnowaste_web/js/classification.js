@@ -71,7 +71,7 @@ function classifications(target) {
                 var rank_name = document.createTextNode(i);
                 var facility_names = document.createTextNode(data[i].facility_name);
 
-                var total_class_amount = document.createTextNode(data[i].waste_amount);
+                var total_class_amount = document.createTextNode(formatNumber(data[i].waste_amount));
 
 
                 var action_button = document.createTextNode("Impacts");
@@ -95,6 +95,10 @@ function classifications(target) {
     }
     xhttp.open("GET", "/classification?Type=" + target, true);
     xhttp.send();
+}
+
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
 

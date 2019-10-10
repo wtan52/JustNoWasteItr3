@@ -23,8 +23,6 @@ function formatNumber(num) {
 
 function facilitySearch(facility_id) {
 
-    console.log("Inside facilitySearch");
-
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {

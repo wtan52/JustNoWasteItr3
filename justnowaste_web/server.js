@@ -630,13 +630,21 @@ const server = http.createServer((req, res) => {
         var conn = con.getConnection();
         
         var TrendGraph;
+        var reduction_techniques;
 
         conn.query('SELECT * FROM industriesdb.emissions Where facility_id = ? group by report_year', [facility_ids], function (error, results, fields) {
             if (error) throw error;
             
             TrendGraph = JSON.stringify(results);
 
-            res.write(TrendGraph);
+        });
+        
+        conn.query('SELECT * FROM industriesdb.emission_reduction_techniques where facility_id= ?',[facility_ids], function (error, results, fields) {
+            if (error) throw error;
+            
+            reduction_techniques = JSON.stringify(results);
+
+            res.write("{\"emissions\":" + TrendGraph + "," + "\"reduction_techniques\":" + reduction_techniques + "}");
             res.end();
 
         });
@@ -659,6 +667,15 @@ const server = http.createServer((req, res) => {
         res.setHeader('Content-Type', 'text/javascript');
         fs.createReadStream('./js/Reading.js').pipe(res);
     } 
+    else if (req.method == 'GET' && req.url == '/quiz_reading.html') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./quiz_reading.html').pipe(res);
+    }else if (req.method == 'GET' && pathname == '/quiz_reading.html') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./quiz_reading.html').pipe(res);
+    }
 
 
 });

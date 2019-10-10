@@ -8,11 +8,10 @@ $(document).ready(function () {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
 
-                var JSONData = JSON.parse(this.responseText);
+                var JSONDataValue = JSON.parse(this.responseText);
 
-
-                console.log(JSONData);
-
+                var JSONData = JSONDataValue.emissions;
+                var JSONReduction = JSONDataValue.reduction_techniques;
 
                 var years = [];
 
@@ -67,12 +66,6 @@ $(document).ready(function () {
                 var land_emission_list = JSONData.map(function (obj) {
                     return obj.land_emission_kg;
                 });
-                //
-                //                console.log(air_point_emission_list);
-                //                console.log(air_fugitive_emission_list);
-                //                console.log(air_total_emission_list);
-                //                console.log(water_emission_list);
-                //                console.log(land_emission_list);
 
                 var substance_array = [];
 
@@ -99,10 +92,50 @@ $(document).ready(function () {
                     }
                     substance_array.push(sortedArr[i]);
                     substance_count.push(count);
-
-//                    console.log("arr",substance_array);
-//                    console.log("arr_count",substance_count);
                 }
+
+                var reduction_array = [];
+
+                var reduction_count = [];
+                var reduction_list = [],
+
+                    sortedReductionArr = [],
+                    counts = 1;
+
+                for (var red = 0; red < JSONReduction.length; red++) {
+                    reduction_list.push(JSONReduction[red].reduction_technique_name);
+
+                }
+
+                var reduction_unique_list = [...new Set(reduction_list)];
+
+                sortedReductionArr = reduction_list.sort();
+
+                for (var i = 0; i < sortedReductionArr.length; i = i + counts) {
+                    counts = 1;
+                    for (var j = i + 1; j < sortedReductionArr.length; j++) {
+                        if (sortedReductionArr[i] === sortedReductionArr[j])
+                            counts++;
+                    }
+                    reduction_array.push(sortedReductionArr[i]);
+                    reduction_count.push(counts);
+
+                }
+
+                console.log(reduction_array);
+                console.log(reduction_count);
+
+                for (var b = 0; b < reduction_array.length; b++) {
+
+                    if (reduction_array[b].length > 20) {
+                        reduction_array[b] = reduction_array[b].substring(0, 20);
+
+                    }
+                }
+
+                console.log("answer");
+                console.log(reduction_array);
+
 
 
                 if (year_dropdown == 0) {
@@ -135,9 +168,6 @@ $(document).ready(function () {
                     var build_pie_data = [year_record[0].air_point_emission_kg, year_record[0].air_fugitive_emission_kg, year_record[0].air_total_emission_kg, year_record[0].water_emission_kg, year_record[0].land_emission_kg];
 
                 }
-
-                console.log(build_pie_data);
-                console.log(substance_unique_list);
 
                 var chartColors = {
                     red: 'rgb(255, 99, 132)',
@@ -234,7 +264,7 @@ $(document).ready(function () {
                         title: {
                             responsive: true,
                             display: true,
-                            text: 'Different type of Emissions by this Industry'
+                            text: 'Different type of Emissions by this Industry over years'
                         }
                     }
                 };
@@ -259,23 +289,44 @@ $(document).ready(function () {
                     }
                 };
 
-//                var configPolar = {
-//                    type: 'polarArea',
-//                    data: {
-//                        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-//                        datasets: [{
-//                            label: "Population (millions)",
-//                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-//                            data: [2478, 5267, 734, 784, 433]
-//                            }]
-//                    },
-//                    options: {
-//                        title: {
-//                            display: true,
-//                            text: 'Predicted world population (millions) in 2050'
-//                        }
-//                    }
-//                };
+                var configBar = {
+                    type: 'bar',
+                    data: {
+                        labels: reduction_array,
+                        datasets: [
+                            {
+                                label: "Population (millions)",
+                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                data: reduction_count
+                            }
+                          ]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Strategies used by this facilites'
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: false,
+                                    labelString: 'Strategies'
+                                }
+      }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Total No in counts'
+                                }
+      }]
+                        }
+                    }
+                };
 
                 var ctx_pie = document.getElementById("pie-chart").getContext("2d");
                 window.myLine = new Chart(ctx_pie, configPie);
@@ -283,11 +334,11 @@ $(document).ready(function () {
                 var ctx = document.getElementById("canvas").getContext("2d");
                 window.myLine = new Chart(ctx, config);
 
-//                var ctx_polar = document.getElementById("polar-chart").getContext("2d");
-//                window.myLine = new Chart(ctx_polar, configPolar);
-
                 var ctx_doughnut = document.getElementById("doughnut-chart").getContext("2d");
                 window.myLine = new Chart(ctx_doughnut, configDoghnut);
+
+                var ctx_bar = document.getElementById("bar-chart").getContext("2d");
+                window.myLine = new Chart(ctx_bar, configBar);
 
             }
 
