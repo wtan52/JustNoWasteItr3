@@ -33,6 +33,12 @@
     <link rel="stylesheet" href="css/search.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        canvas#canvas , canvas#bar-chart {
+            box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
+        }
+
+    </style>
 
 </head>
 
@@ -63,33 +69,146 @@
 
     <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
         <div class="d-flex justify-content-between">
+            <!--
             <div class="col-lg-6">
                 <canvas id="canvas" width="800" height="350"></canvas>
             </div>
+-->
 
+            <aside class="col-lg-6">
+
+                <div class="card">
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">YEARLY TREND</h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form id='form-id'>
+                                    <!-- Graph Here-->
+                                    <canvas id="canvas" width="800" height="350"></canvas>
+                                </form>
+
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+
+            <!--
             <div class="col-lg-6">
-                
-                 <canvas id="doughnut-chart" width="850" height="350"></canvas>
+
+                <canvas id="doughnut-chart" width="850" height="350"></canvas>
             </div>
-            
+-->
+
+            <aside class="col-lg-6">
+
+                <div class="card">
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">SUBSTANCES</h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form id='form-id'>
+                                    <!-- Graph Here-->
+                                    <canvas id="doughnut-chart" width="850" height="360"></canvas>
+                                </form>
+
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+
         </div>
 
         <div class="d-flex justify-content-between">
+            <!--
             <div class="col-lg-6">
                 <canvas id="pie-chart" width="800" height="350"></canvas>
             </div>
+-->
+
+            <aside class="col-lg-6">
+
+                <div class="card">
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">TYPES OF EMISSIONS</h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form id='form-id'>
+                                    <!-- Graph Here-->
+                                    <canvas id="pie-chart" width="800" height="330"></canvas>
+                                </form>
+
+                            </div> <!-- card-body.// -->
+                            <select id="year" class="form-control pb_height-50 reverse">
+                                <option disabled selected value="">Year</option>
+                            </select>
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+
+
+            <!--
+            
             <div class="col-lg-1">
                 <select id="year" class="form-control pb_height-50 reverse">
                     <option disabled selected value="">Year</option>
                 </select>
             </div>
+-->
 
-            <div class="col-lg-6">
+            <!--
+            <div class="col-lg-5">
                 <canvas id="polar-chart" width="800" height="350"></canvas>
+                <canvas id="bar-chart" width="800" height="350"></canvas>
             </div>
+-->
+
+
+
+            <aside class="col-lg-6">
+
+                <div class="card">
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">STRATEGIES</h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form id='form-id'>
+                                    <!-- Graph Here-->
+                                    <canvas id="bar-chart" width="800" height="350"></canvas>
+                                </form>
+
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
         </div>
 
     </section>
+
+
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

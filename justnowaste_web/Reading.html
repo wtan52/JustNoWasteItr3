@@ -35,14 +35,21 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
-            background-image: url('images/industry-street-unsplash.jpg');
+            background-image: url("/images/wind-mill.jpg");
             background-color: #cccccc;
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
     </style>
 </head>
 
-<body style="background-image: ">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -54,11 +61,9 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item active"><a href="Statistics.html" class="nav-link">Statistics</a></li>
+                    <li class="nav-item"><a href="/quiz_reading.html" class="nav-link">Attempt Quiz</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Analytics</a></li>
                 </ul>
             </div>
         </div>
@@ -66,11 +71,109 @@
     <!-- END nav -->
 
 
+    <!--
     <section class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
 
 
     </section>
+-->
+
+
+
+    <!-- section 3 FAQ -->
+    <section class="pb_section" id="section-faq">
+        <!--        <div class="overlay"></div>-->
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                    <h2>Know about Industry Waste</h2>
+<!--
+                <div class="col-md-6 text-center mb-5">
+
+                </div>
+-->
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <div id="pb_faq" class="pb_accordion" data-children=".item">
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq1" aria-expanded="true" aria-controls="pb_faq1" class="pb_font-22 py-4">Why are Australian industries trying to measure, monitor and manage emissions to air, land and water?</a>
+                            <div id="pb_faq1" class="collapse show" role="tabpanel">
+                                <div class="py-3">
+                                    <p>There has been increasing community demand to know about emissions of toxic substances to the environment. Australian, state and territory governments have agreed to legislation called National Environment Protection Measures (NEPMs) which help protect or manage particular aspects of the environment. Australian industries are required to measure and monitor their emissions under this legislation.</p>
+
+                                    <p>The management of substances is necessary for several reasons:</p>
+                                    <li>to maintain and improve air and water quality</li>
+                                    <li>to minimise environmental impacts associated with hazardous wastes, and</li>
+                                    <li>to improve the sustainable use of resources.</li>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq2" aria-expanded="false" aria-controls="pb_faq2" class="pb_font-22 py-4">Measures to reduce emissions</a>
+                            <div id="pb_faq2" class="collapse" role="tabpanel">
+                                <div class="py-3">
+                                    <p>Australian industries, homes, schools and communities are trying to reduce emissions, to reduce waste and keep environmental resources healthy. By working together, industries, researchers, conservationists and the government have introduced technologies and innovations — including changes to practices — which have reduced emissions of toxic substances to air, land and water.</p>
+
+                                    <p>Approaches to reducing emissions of toxic substances can involve:</p>
+                                    <li>tracking toxic substance emissions over time, from a range of different sources and on a geographical basis</li>
+                                    <li>using the emissions information to inform decision making for environmental planning and management, and to further reduce emissions</li>
+                                    <li>making the emissions information available to all sectors of the community so that everyone can help to reduce pollution</li>
+                                    <li>There is not a 'one size fits all' solution</li>
+
+                                    <p>It is important to keep looking for new and better ways of reducing toxic emissions to air, land and water, to benefit people and the environment. Sharing information on solutions is an important step toward reducing toxic substances to air, land and water on a global scale.</p>
+                                    <p>Industry can use cleaner production techniques and install pollution control devices to reduce their emissions. These could include:</p>
+                                    <li>using cleaner raw materials and chemicals</li>
+                                    <li>installing vapour or product recovery systems</li>
+                                    <li>improving internal processes, such as maintenance scheduling and inspection programs for potential leaks or spills</li>
+                                    <li>modifying and improving processes and equipment such as installing overflow alarms and increasing dust suppression, and</li>
+                                    <li>installing end of pipe reduction devices such as fabric filters and scrubbers</li>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <h3>SUBSTANCES FACT SHEET</h3>
+
+
+                        <h5>Arsenic and compounds</h5>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq3" aria-expanded="false" aria-controls="pb_faq3" class="pb_font-22 py-4">Where does arsenic come from?</a>
+                            <div id="pb_faq3" class="collapse" role="tabpanel">
+                                <div class="py-3">
+                                    <p>You may have heard about arsenic being a dangerous, poisonous substance, and research shows that it can be harmful, but did you know that arsenic is also found naturally in the environment?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h5>Benzene and compounds</h5>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq4" aria-expanded="false" aria-controls="pb_faq4" class="pb_font-22 py-4">Where does benzene come from?</a>
+                            <div id="pb_faq4" class="collapse" role="tabpanel">
+                                <div class="py-3">
+                                    <p>Benzene can be found in items that we use every day, such as glue and cleaning products. It is a dangerous, poisonous substance, and research shows that it can be harmful to us as well as to animals, plants, and the environment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5>Carbon monoxide</h5>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq5" aria-expanded="false" aria-controls="pb_faq5" class="pb_font-22 py-4">Where does carbon monoxide come from?</a>
+                            <div id="pb_faq5" class="collapse" role="tabpanel">
+                                <div class="py-3">
+                                    <p>You may have heard that carbon monoxide is a dangerous, poisonous substance if people are exposed to it in high quantities. Research shows that it can be harmful, but did you know that carbon monoxide is also found naturally in the environment?</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section 3 -->
 
 
     <!-- loader -->

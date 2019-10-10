@@ -29,7 +29,7 @@ function addResult(substance_name, category, colour, i, facility_id) {
 
     tr.appendChild(nameTd);
     tr.appendChild(categoryTd);
-    tr.appendChild(reportTd);
+//    tr.appendChild(reportTd);
 
     results.appendChild(tr);
 }
