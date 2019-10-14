@@ -1,21 +1,21 @@
-var $modal = $('.modal');
-
-// Show loader & then get content when modal is shown
-$modal.on('show.bs.modal', function (e) {
-    var paragraphs = $(e.relatedTarget).data('paragraphs');
-
-    $(this)
-        .addClass('modal-scrollfix')
-        .find('.modal-body')
-        .html('loading...')
-        .load('https://baconipsum.com/api/?type=meat-and-filler&paras=' + paragraphs, function () {
-
-            $modal
-                .removeClass('modal-scrollfix')
-                .find('.modal-body').text('Sample');
-        });
-
-});
+//var $modal = $('.modal');
+//
+//// Show loader & then get content when modal is shown
+//$modal.on('show.bs.modal', function (e) {
+//    var paragraphs = $(e.relatedTarget).data('paragraphs');
+//
+//    $(this)
+//        .addClass('modal-scrollfix')
+//        .find('.modal-body')
+//        .html('loading...')
+//        .load('https://baconipsum.com/api/?type=meat-and-filler&paras=' + paragraphs, function () {
+//
+//            $modal
+//                .removeClass('modal-scrollfix')
+//                .find('.modal-body').text('Sample');
+//        });
+//
+//});
 
 function formatNumber(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -76,7 +76,7 @@ function facilitySearch(facility_id) {
          document.getElementById("anzsic-name").innerHTML = JSONData[0].primary_anzsic_class_name;
          document.getElementById("reports-submitted").innerHTML = JSONData[0].reports;
          var a = document.getElementById("dashboard");
-            a.href = "TrendGraph.html?facility_id=" + facility_id;
+            a.href = "TrendGraph.html?facility_id=" + facility_id+"#CompanyInfoSection";
             
         var total_land_waste_amount = formatNumber(Math.round(JSONData[0].Total_Land_Waste_Amount)) + " Kg";
         var total_air_point_waste_amount = formatNumber(Math.round(JSONData[0].Total_Air_Point_Waste_Amount)) + " Kg";

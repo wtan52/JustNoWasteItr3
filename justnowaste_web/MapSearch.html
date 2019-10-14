@@ -28,8 +28,10 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mapSearch.css">
+    <link rel="stylesheet" href="css/search.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -43,12 +45,10 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Statistics</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/Reading.html" class="nav-link">E-Learning</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="test_yourself.html" class="nav-link">Quiz</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Analytics</a></li>
                 </ul>
             </div>
         </div>
@@ -78,11 +78,10 @@
 
                 <div class="row col-lg-4 col-md-6 col-sm-6 col-xs-6">
                     <div class="col-12">
-<!--                        <form action="/Search.html" method="get" class="bg-white rounded pb_form_v1">-->
-                        <div  class="bg-white rounded pb_form_v1">
+                        <div class="bg-white rounded pb_form_v1">
                             <h4 class="mb-4 mt-0 text-center"><b>Facilites at </b><span id="company_name"></span></h4>
                             <div>
-                            <H6 style="text-align: center; font-weight: 800;">Company Name</H6>
+                                <H6 style="text-align: center; font-weight: 800;">Company Name</H6>
                             </div>
                             <div id="listing">
                                 <table id="resultsTable">
@@ -95,6 +94,83 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ftco-section contact-section" id="emission_compare">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info justify-content-center">
+                <div class="col-md-8">
+                    <div class="row mb-5">
+                        <div class="col-md-4 text-center py-4">
+                            <div class="icon">
+                                <img src="/images/factory.svg" alt="company name">
+                            </div>
+                            <p><span>Facility Name</span> <span id="facility-name"></span></p>
+                        </div>
+                        <div class="col-md-4 text-center border-height py-4">
+                            <div class="icon">
+                                <img src="/images/company-sub.svg" alt="company code">
+                            </div>
+                            <p><span>Suburb Postcode</span><span id="suburb-postcode"></span></p>
+                        </div>
+                        <div class="col-md-4 text-center py-4">
+                            <div class="icon">
+                                <img src="/images/manufacture.svg" alt="company code">
+                            </div>
+                            <p><span>Main Activites</span> <span id="main-activites"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex mb-5 contact-info justify-content-center">
+                <div class="col-md-8">
+                    <div class="row mb-5">
+                        <div class="col-md-4 text-center py-4">
+                            <div class="icon">
+                                <img src="/images/puzzle.svg" alt="company code">
+                            </div>
+                            <p><span>ANZSIC Code</span> <span id="anzsic-code"></span></p>
+                        </div>
+                        <div class="col-md-4 text-center border-height py-4">
+                            <div class="icon">
+                                <img src="/images/identity.svg" alt="company code">
+                            </div>
+                            <p><span>ANZSIC Name</span> <span id="anzsic-name"></span></p>
+                        </div>
+                        <div class="col-md-4 text-center py-4">
+                            <div class="icon">
+                                <img src="/images/process.svg" alt="company code">
+                            </div>
+                            <p><span>Reports Submitted</span> <span id="reports-submitted"></span></p>
+                            <a id="dashboard" class="btn btn-primary">view historical reports</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="table-containers">
+                <table class="table table-hover">
+                    <thead class="text-center" id="results-heading">
+                        <tr>
+                            <th scope="col">Emission Type</th>
+                            <th scope="col">Emission Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center" id="resultsNew"></tbody>
+                </table>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-lg btn-primary" onclick="ComapreNPI()" id="compare">Compare NPI Categories</button>
+<!--
+                    <div class="row justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-lg btn-primary" onclick="search()" id="search">Search Another Facility</button>
+                            <button type="button" class="btn btn-lg btn-primary" onclick="ComapreNPI()" id="compare">Compare NPI Categories</button>
+                        </div>
+                    </div>
+-->
                 </div>
             </div>
         </div>

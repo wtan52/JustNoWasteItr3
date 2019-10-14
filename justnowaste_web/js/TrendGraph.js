@@ -10,8 +10,33 @@ $(document).ready(function () {
 
                 var JSONDataValue = JSON.parse(this.responseText);
 
+                console.log(JSONDataValue);
+
                 var JSONData = JSONDataValue.emissions;
                 var JSONReduction = JSONDataValue.reduction_techniques;
+                var JSONMaxValue = JSONDataValue.max_values;
+
+                document.getElementById("company-name").innerHTML = JSONData[0].facility_name;
+                document.getElementById("box-1").innerHTML = JSONMaxValue[0].Substance;
+                if (JSONMaxValue[0].Air == null) {
+
+                    document.getElementById("box-2").innerHTML = 0+" Kg";
+                } else {
+                    document.getElementById("box-2").innerHTML = JSONMaxValue[0].Air +" Kg";
+                }
+                if (JSONMaxValue[0].Water == null) {
+
+                    document.getElementById("box-3").innerHTML = 0+" Kg";
+                } else {
+                    document.getElementById("box-3").innerHTML = JSONMaxValue[0].Water +" Kg";
+                }
+                if (JSONMaxValue[0].Land == null) {
+
+                    document.getElementById("box-4").innerHTML = 0+" Kg";
+                } else {
+                    document.getElementById("box-4").innerHTML = JSONMaxValue[0].Land +" Kg";
+                }
+                
 
                 var years = [];
 
@@ -122,9 +147,6 @@ $(document).ready(function () {
 
                 }
 
-                console.log(reduction_array);
-                console.log(reduction_count);
-
                 for (var b = 0; b < reduction_array.length; b++) {
 
                     if (reduction_array[b].length > 20) {
@@ -132,11 +154,6 @@ $(document).ready(function () {
 
                     }
                 }
-
-                console.log("answer");
-                console.log(reduction_array);
-
-
 
                 if (year_dropdown == 0) {
 
@@ -171,12 +188,19 @@ $(document).ready(function () {
 
                 var chartColors = {
                     red: 'rgb(255, 99, 132)',
+                    reds: 'rgb(255, 99, 132,0.4)',
                     orange: 'rgb(255, 159, 64)',
+                    oranges: 'rgb(255, 159, 64,0.4)',
                     yellow: 'rgb(255, 205, 86)',
-                    green: 'rgb(75, 192, 192)',
+                    yellows: 'rgb(255, 205, 86,0.4)',
+                    green: 'rgb(75, 192, 192,0.4)',
+                    greens: 'rgb(75, 192, 192,0.4)',
                     blue: 'rgb(54, 162, 235)',
+                    blues: 'rgb(54, 162, 235,0.4)',
                     purple: 'rgb(153, 102, 255)',
-                    grey: 'rgb(231,233,237)'
+                    purples: 'rgb(153, 102, 255,0.4)',
+                    grey: 'rgb(231,233,237)',
+                    greys: 'rgb(231,233,237,0.4)'
                 };
 
                 var randomScalingFactor = function () {
@@ -187,35 +211,105 @@ $(document).ready(function () {
                     data: {
                         labels: timeList,
                         datasets: [{
-                            label: "Air Point Emission",
-                            backgroundColor: chartColors.red,
+                            label: "Air Point",
+                            fill: true,
+                            backgroundColor: chartColors.reds,
                             borderColor: chartColors.red,
                             data: air_point_emission_list,
-                            fill: false,
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'round',
+                            pointBorderColor: "white",
+                            pointBackgroundColor: chartColors.red,
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: chartColors.red,
+                            pointHoverBorderColor: "white",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHitRadius: 10,
+                            spanGaps: true,
                         }, {
-                            label: "Air Fugitive Emission",
-                            fill: false,
-                            backgroundColor: chartColors.blue,
+                            label: "Air Fugitive",
+                            fill: true,
+                            backgroundColor: chartColors.blues,
                             borderColor: chartColors.blue,
                             data: air_fugitive_emission_list,
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'round',
+                            pointBorderColor: "white",
+                            pointBackgroundColor: chartColors.blue,
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: chartColors.blue,
+                            pointHoverBorderColor: "white",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHitRadius: 10,
+                            spanGaps: true,
                         }, {
-                            label: "Air Total Emission",
-                            fill: false,
-                            backgroundColor: chartColors.yellow,
+                            label: "Air Total",
+                            fill: true,
+                            backgroundColor: chartColors.yellows,
                             borderColor: chartColors.yellow,
                             data: air_total_emission_list,
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'round',
+                            pointBorderColor: "white",
+                            pointBackgroundColor: chartColors.yellow,
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: chartColors.yellow,
+                            pointHoverBorderColor: "white",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHitRadius: 10,
+                            spanGaps: true,
                         }, {
-                            label: "Water Emission",
-                            fill: false,
-                            backgroundColor: chartColors.purple,
+                            label: "Water",
+                            fill: true,
+                            backgroundColor: chartColors.purples,
                             borderColor: chartColors.purple,
                             data: water_emission_list,
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'round',
+                            pointBorderColor: "white",
+                            pointBackgroundColor: chartColors.purple,
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: chartColors.purple,
+                            pointHoverBorderColor: "white",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHitRadius: 10,
+                            spanGaps: true,
                         }, {
-                            label: "Land Emission",
-                            fill: false,
-                            backgroundColor: chartColors.grey,
+                            label: "Land",
+                            fill: true,
+                            backgroundColor: chartColors.greys,
                             borderColor: chartColors.grey,
                             data: land_emission_list,
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'round',
+                            pointBorderColor: "white",
+                            pointBackgroundColor: chartColors.grey,
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: chartColors.grey,
+                            pointHoverBorderColor: "white",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHitRadius: 10,
+                            spanGaps: true,
                         }]
                     },
                     options: {
@@ -253,7 +347,7 @@ $(document).ready(function () {
                 var configPie = {
                     type: 'pie',
                     data: {
-                        labels: ["Air Point Emission", "Air Fugitive Emission", "Air Total Emission", "Water Emission", "Land Emission"],
+                        labels: ["Air Point", "Air Fugitive", "Air Total", "Water", "Land"],
                         datasets: [{
                             label: "Population (millions)",
                             backgroundColor: [chartColors.red, chartColors.blue, chartColors.green, chartColors.yellow, chartColors.grey],
@@ -296,7 +390,7 @@ $(document).ready(function () {
                         datasets: [
                             {
                                 label: "Population (millions)",
-                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue,chartColors.purple, chartColors.grey, "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850",chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue,chartColors.purple, chartColors.grey],
+                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue, chartColors.purple, chartColors.grey, "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", chartColors.red, chartColors.orange, chartColors.yellow, chartColors.green, chartColors.blue, chartColors.purple, chartColors.grey],
                                 data: reduction_count
                             }
                           ]
