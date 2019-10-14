@@ -153,7 +153,11 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/jpg');
         fs.createReadStream('./images/find-place1.jpg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/wind-mill.jpg') {
+    } else if (req.method == 'GET' && req.url == '/images/dashboard.jpg') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'image/jpg');
+        fs.createReadStream('./images/dashboard.jpg').pipe(res);
+    } else if (req.method == 'GET' && req.url == '/images/wind-mill.jpg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/jpg');
         fs.createReadStream('./images/wind-mill.jpg').pipe(res);
@@ -244,7 +248,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/css');
         fs.createReadStream('./assets/css/classification.css').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/classification.html?target=Total_Land_Waste_Amount') {
+    } else if (req.method == 'GET' && req.url == '/classification.html?target=Total_Land_Waste_Amount') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./classification.html').pipe(res);
@@ -401,7 +405,7 @@ const server = http.createServer((req, res) => {
         var queries = getJsonFromUrl(current_url.search);
         var facility_ids = queries.facility_id;
         var conn = con.getConnection();
-        
+
         var facility_details;
         var NPI_data;
 
@@ -415,7 +419,7 @@ const server = http.createServer((req, res) => {
 
         conn.query('SELECT * FROM industriesdb.facility_NPI', function (error, results, fields) {
             if (error) throw error;
-            
+
             NPI_data = JSON.stringify(results);
 
             res.write("{\"facility\":" + facility_details + "," + "\"NPI\":" + NPI_data + "}");
@@ -452,19 +456,19 @@ const server = http.createServer((req, res) => {
         conn.end();
 
     }
-    
+
     //substance.html facility_details?facility_id   facility_details?facility_id=
     else if (req.method == 'GET' && pathname == '/substance.html') {
         console.log("Inside substance.html");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./substance.html').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/js/substance.js') {
+    } else if (req.method == 'GET' && req.url == '/js/substance.js') {
         console.log("Inside /js/substance.js");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         fs.createReadStream('./js/substance.js').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/css/substance.css') {
+    } else if (req.method == 'GET' && req.url == '/css/substance.css') {
         console.log("Inside /css/substance.css");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/css');
@@ -476,7 +480,7 @@ const server = http.createServer((req, res) => {
         var queries = getJsonFromUrl(current_url.search);
         var facility_ids = queries.facility_id;
         var conn = con.getConnection();
-        
+
         var facility_details;
         var substance_impacts;
 
@@ -490,7 +494,7 @@ const server = http.createServer((req, res) => {
 
         conn.query('SELECT * FROM industriesdb.substance_impacts', function (error, results, fields) {
             if (error) throw error;
-            
+
             substance_impacts = JSON.stringify(results);
 
             res.write("{\"facility\":" + facility_details + "," + "\"substance_impacts\":" + substance_impacts + "}");
@@ -501,31 +505,31 @@ const server = http.createServer((req, res) => {
         conn.end();
 
     }
-    
+
     //strategy.html   Strategy.html  SELECT * FROM industriesdb.facilities_strategies
     else if (req.method == 'GET' && pathname == '/Strategy.html') {
         console.log("Inside Strategy.html");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./Strategy.html').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/js/strategy.js') {
+    } else if (req.method == 'GET' && req.url == '/js/strategy.js') {
         console.log("Inside /js/strategy.js");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         fs.createReadStream('./js/strategy.js').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/css/strategy.css') {
+    } else if (req.method == 'GET' && req.url == '/css/strategy.css') {
         console.log("Inside /css/strategy.css");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/css');
         fs.createReadStream('./css/strategy.css').pipe(res);
-    }else if (req.method == 'GET' && pathname == '/strategy' && current_url.query != null) {
+    } else if (req.method == 'GET' && pathname == '/strategy' && current_url.query != null) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
 
         var queries = getJsonFromUrl(current_url.search);
         var facility_ids = queries.facility_id;
         var conn = con.getConnection();
-        
+
         var facility_details;
         var substance_impacts;
 
@@ -539,7 +543,7 @@ const server = http.createServer((req, res) => {
 
         conn.query('SELECT * FROM industriesdb.reduction_strategies', function (error, results, fields) {
             if (error) throw error;
-            
+
             substance_impacts = JSON.stringify(results);
 
             res.write("{\"facility\":" + facility_details + "," + "\"substance_impacts\":" + substance_impacts + "}");
@@ -549,33 +553,31 @@ const server = http.createServer((req, res) => {
 
         conn.end();
 
-    }
-    
-    else if (req.method == 'GET' && req.url == '/images/company-sub.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/company-sub.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/company-sub.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/factory.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/factory.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/factory.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/manufacture.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/manufacture.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/manufacture.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/manufacture.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/manufacture.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/manufacture.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/puzzle.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/puzzle.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/puzzle.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/identity.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/identity.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/identity.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/process.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/process.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/process.svg').pipe(res);
@@ -587,37 +589,37 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/visitor.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/rounded-red-square-shape.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/rounded-red-square-shape.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/rounded-red-square-shape.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/rounded-green-square-shape.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/rounded-green-square-shape.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/rounded-green-square-shape.svg').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/images/rounded-yellow-square-shape.svg') {
+    } else if (req.method == 'GET' && req.url == '/images/rounded-yellow-square-shape.svg') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');
         fs.createReadStream('./images/rounded-yellow-square-shape.svg').pipe(res);
-    }   
-    
+    }
+
     //Quiz
     else if (req.method == 'GET' && req.url == '/test_yourself.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./test_yourself.html').pipe(res);
     }
-    
+
     //Trend graph   TrendGraph TrendGraph  TrendGraph
     else if (req.method == 'GET' && req.url == '/TrendGraph.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./TrendGraph.html').pipe(res);
-    }else if (req.method == 'GET' && pathname == '/TrendGraph.html') {
+    } else if (req.method == 'GET' && pathname == '/TrendGraph.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./TrendGraph.html').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/js/TrendGraph.js') {
+    } else if (req.method == 'GET' && req.url == '/js/TrendGraph.js') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/javascript');
         fs.createReadStream('./js/TrendGraph.js').pipe(res);
@@ -628,23 +630,31 @@ const server = http.createServer((req, res) => {
         var queries = getJsonFromUrl(current_url.search);
         var facility_ids = queries.facility_id;
         var conn = con.getConnection();
-        
+
         var TrendGraph;
         var reduction_techniques;
+        var max_values;
 
         conn.query('SELECT * FROM industriesdb.emissions Where facility_id = ? group by report_year', [facility_ids], function (error, results, fields) {
             if (error) throw error;
-            
+
             TrendGraph = JSON.stringify(results);
 
         });
-        
-        conn.query('SELECT * FROM industriesdb.emission_reduction_techniques where facility_id= ?',[facility_ids], function (error, results, fields) {
+
+        conn.query("SELECT MAX(substance_name) as Substance, MAX(air_total_emission_kg) as Air, MAX(water_emission_kg) as Water, MAX(land_emission_kg) as Land FROM industriesdb.emissions Where facility_id = ?", [facility_ids], function (error, results, fields) {
             if (error) throw error;
-            
+
+            max_values = JSON.stringify(results);
+
+        });
+
+        conn.query('SELECT * FROM industriesdb.emission_reduction_techniques where facility_id= ?', [facility_ids], function (error, results, fields) {
+            if (error) throw error;
+
             reduction_techniques = JSON.stringify(results);
 
-            res.write("{\"emissions\":" + TrendGraph + "," + "\"reduction_techniques\":" + reduction_techniques + "}");
+            res.write("{\"emissions\":" + TrendGraph + "," + "\"reduction_techniques\":" + reduction_techniques + "," + "\"max_values\":" + max_values + "}");
             res.end();
 
         });
@@ -652,26 +662,25 @@ const server = http.createServer((req, res) => {
         conn.end();
 
     }
-    
+
     //Reading
     else if (req.method == 'GET' && req.url == '/Reading.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./Reading.html').pipe(res);
-    }else if (req.method == 'GET' && pathname == '/Reading.html') {
+    } else if (req.method == 'GET' && pathname == '/Reading.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./Reading.html').pipe(res);
-    }else if (req.method == 'GET' && req.url == '/js/Reading.js') {
+    } else if (req.method == 'GET' && req.url == '/js/Reading.js') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/javascript');
         fs.createReadStream('./js/Reading.js').pipe(res);
-    } 
-    else if (req.method == 'GET' && req.url == '/quiz_reading.html') {
+    } else if (req.method == 'GET' && req.url == '/quiz_reading.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./quiz_reading.html').pipe(res);
-    }else if (req.method == 'GET' && pathname == '/quiz_reading.html') {
+    } else if (req.method == 'GET' && pathname == '/quiz_reading.html') {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./quiz_reading.html').pipe(res);

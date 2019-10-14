@@ -34,8 +34,100 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        canvas#canvas , canvas#bar-chart {
+        /*
+        canvas#canvas,
+        canvas#bar-chart {
             box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
+        }
+*/
+
+        div#graph1,
+        div#graph2 {
+            padding-top: 10px;
+        }
+
+        div#graph2,
+        div#graph4 {
+            padding-left: 10px;
+            padding-right: 30px;
+            padding-bottom: 10px;
+        }
+
+        div#graph1,
+        div#graph3 {
+            padding-right: 10px;
+            padding-left: 30px;
+            padding-bottom: 10px;
+        }
+
+        div#card1,
+        div#card2,
+        div#card3,
+        div#card4,
+            {
+            color: #fff;
+        }
+
+        div#card1,
+        div#card2,
+        div#card3,
+        div#card4 {
+            padding-left: 30px;
+            padding-right: 30px;
+
+        }
+
+        div#card-body1 {
+            background: linear-gradient(to right, rgba(68, 129, 235, 0.9), rgba(4, 190, 254, 0.9));
+        }
+
+        div#card-body2 {
+            background: linear-gradient(to right, rgba(255, 88, 88, 0.9), rgba(240, 152, 25, 0.9));
+        }
+
+        div#card-body3 {
+            
+            background: linear-gradient(to right, rgba(68, 129, 235, 0.9), rgba(4, 190, 254, 0.9));
+        }
+
+        div#card-body4 {
+            background: linear-gradient(to right, rgba(80, 204, 127, 0.9), rgba(245, 209, 0, 0.9));
+        }
+
+        .col-md-3 {
+            padding-top: 20px;
+        }
+
+        h5 {
+            color: whitesmoke;
+        }
+
+        /*
+        .wrapper {
+            height: 50% !important;
+        }
+*/
+
+        .col-lg-6 {
+            padding-top: 5%;
+        }
+
+        .hero-wrap.hero-wrap-2 {
+            background-color: #e9ecef96;
+        }
+
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: .25rem;
         }
 
     </style>
@@ -43,7 +135,7 @@
 </head>
 
 <body>
-    <!--
+
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -55,156 +147,135 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Statistics</a></li>
+                    <li class="nav-item"><a href="/Reading.html" class="nav-link">E-Learning</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="test_yourself.html" class="nav-link">Quiz</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="comingSoon.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Analytics</a></li>
                 </ul>
             </div>
         </div>
     </nav>
--->
     <!-- END nav -->
 
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight pt100 pb100" style="background-image: url('images/dashboard.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <h1 class="mb-3 bread" style="color: black">Emitting Facilities</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
-        <div class="d-flex justify-content-between">
-            <!--
-            <div class="col-lg-6">
-                <canvas id="canvas" width="800" height="350"></canvas>
-            </div>
--->
-
-            <aside class="col-lg-6">
-
+        <H1 id="company-name" style="text-align: center; padding-top: 70px;">Company Name</H1>
+        <div class="row">
+            <div class="col-md-3" id="card1">
                 <div class="card">
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">YEARLY TREND</h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <form id='form-id'>
-                                    <!-- Graph Here-->
-                                    <canvas id="canvas" width="800" height="350"></canvas>
-                                </form>
-
-                            </div> <!-- card-body.// -->
+                    <div class="card-body" id="card-body1">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <H5>Highest Substance Emitted</H5>
+                            <H6 style="color: white" id="box-1"></H6>
                         </div>
-                    </article> <!-- card-group-item.// -->
-
-
-                </div> <!-- card.// -->
-
-            </aside> <!-- col.// -->
-
-            <!--
-            <div class="col-lg-6">
-
-                <canvas id="doughnut-chart" width="850" height="350"></canvas>
+                    </div>
+                </div>
             </div>
--->
 
-            <aside class="col-lg-6">
-
+            <div class="col-md-3" id="card2">
                 <div class="card">
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">SUBSTANCES</h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <form id='form-id'>
-                                    <!-- Graph Here-->
-                                    <canvas id="doughnut-chart" width="850" height="360"></canvas>
-                                </form>
-
-                            </div> <!-- card-body.// -->
+                    <div class="card-body" id="card-body2">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <H5>Highest Air Emission</H5>
+                            <H6 style="color: white" id="box-2"></H6>
                         </div>
-                    </article> <!-- card-group-item.// -->
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3" id="card3">
+                <div class="card">
+                    <div class="card-body" id="card-body3">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <H5>Highest Water Emission</H5>
+                            <H6 style="color: white" id="box-3"></H6>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                </div> <!-- card.// -->
-
-            </aside> <!-- col.// -->
-
+            <div class="col-md-3" id="card4">
+                <div class="card">
+                    <div class="card-body" id="card-body4">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <H5>Highest Land Emission</H5>
+                            <H6 style="color: white" id="box-4"></H6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="d-flex justify-content-between">
-            <!--
-            <div class="col-lg-6">
-                <canvas id="pie-chart" width="800" height="350"></canvas>
-            </div>
--->
-
-            <aside class="col-lg-6">
-
+        <div class="row">
+            <div class="col-md-6" id="graph1">
                 <div class="card">
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">TYPES OF EMISSIONS</h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <form id='form-id'>
-                                    <!-- Graph Here-->
-                                    <canvas id="pie-chart" width="800" height="330"></canvas>
-                                </form>
+                    <div class="card-body">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <canvas id="canvas" width="100vw" height="45vh"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                            </div> <!-- card-body.// -->
+            <div class="col-md-6" id="graph2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="wrapper">
+                            <!-- Graph Here-->
+                            <canvas id="doughnut-chart" width="100vw" height="45vh"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-wrap hero-wrap-2" id="CompanyInfoSection">
+
+        <div class="row">
+            <div class="col-md-6" id="graph3">
+                <div class="card">
+                    <div class="card-body">
+                        <div style="text-align: right" class="col-lg-3">
                             <select id="year" class="form-control pb_height-50 reverse">
                                 <option disabled selected value="">Year</option>
                             </select>
                         </div>
-                    </article> <!-- card-group-item.// -->
-
-
-                </div> <!-- card.// -->
-
-            </aside> <!-- col.// -->
-
-
-            <!--
-            
-            <div class="col-lg-1">
-                <select id="year" class="form-control pb_height-50 reverse">
-                    <option disabled selected value="">Year</option>
-                </select>
+                        <form id='form-id'>
+                            <!-- Graph Here-->
+                            <canvas id="pie-chart" width="100vw" height="45vh"></canvas>
+                        </form>
+                    </div>
+                </div>
             </div>
--->
 
-            <!--
-            <div class="col-lg-5">
-                <canvas id="polar-chart" width="800" height="350"></canvas>
-                <canvas id="bar-chart" width="800" height="350"></canvas>
-            </div>
--->
-
-
-
-            <aside class="col-lg-6">
-
+            <div class="col-md-6" id="graph4">
                 <div class="card">
-                    <article class="card-group-item">
-                        <header class="card-header">
-                            <h6 class="title">STRATEGIES</h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <form id='form-id'>
-                                    <!-- Graph Here-->
-                                    <canvas id="bar-chart" width="800" height="350"></canvas>
-                                </form>
-
-                            </div> <!-- card-body.// -->
-                        </div>
-                    </article> <!-- card-group-item.// -->
-
-
-                </div> <!-- card.// -->
-
-            </aside> <!-- col.// -->
+                    <div class="card-body">
+                        <form id='form-id'>
+                            <!-- Graph Here-->
+                            <canvas id="bar-chart" width="100vw" height="52vh"></canvas>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
 
     </section>
 

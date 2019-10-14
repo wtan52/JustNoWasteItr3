@@ -37,3 +37,33 @@ td#comp-name {
     padding: 30px;
     width: 93vw;
 }
+
+button#compare {
+position: relative;
+    left: -10vw;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    position: inherit;
+}
+
+#table-containers {
+    margin-left: 30vw;
+    margin-right: 18vw;
+    margin-top: 5%;
+}
+
+
+@media only screen and (max-width: 425px),
+(min-device-width: 200px) and (max-device-width: 425px) {
+
+#table-containers {
+    margin-left: 0vw;
+    margin-right: 18vw;
+    margin-top: 5%;
+}
+    
+}

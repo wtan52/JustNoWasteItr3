@@ -9996,5 +9996,11 @@ td#red {
     background-color: darkred;
     color: white;
 }
+span.ion-ios-search {
+    cursor: pointer;
+}
+button {
+    cursor: pointer;
+}
 
 
