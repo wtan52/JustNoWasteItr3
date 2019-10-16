@@ -23,10 +23,10 @@ const server = http.createServer((req, res) => {
     const pathname = current_url.pathname;
     const href = current_url.href;
 
-    //    console.log(method);
-    //    console.log(current_url);
-    //    console.log(pathname);
-    //    console.log(href);
+        console.log(method);
+        console.log(current_url);
+        console.log(pathname);
+        console.log(href);
 
 
     if (req.method == 'GET' && req.url == '/') {
@@ -684,6 +684,10 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('./quiz_reading.html').pipe(res);
+    }else if(req.method == 'GET'){
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./error.html').pipe(res);        
     }
 
 

@@ -16,3 +16,36 @@ span#address, span#suburb, span#website{
     font-weight: 400;
     color: #666666;
 }
+
+span#address, span#suburb, span#website {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    background: #fff;
+    line-height: 1.8;
+    font-weight: 400;
+
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+    font-size: larger;
+}
+
+h3#stategy {
+    font-size: medium;
+}
+
+ h2{
+    font-weight: 300 !important;
+    font-size: larger;
+}
+
+
+span#address, span#suburb, span#website {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    background: #fff;
+    line-height: 1.8;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+    font-size: medium !important;
+}

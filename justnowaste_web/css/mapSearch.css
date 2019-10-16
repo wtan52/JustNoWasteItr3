@@ -40,7 +40,6 @@ td#comp-name {
 
 button#compare {
 position: relative;
-    left: -10vw;
 }
 
 .table th, .table td {
@@ -65,5 +64,17 @@ position: relative;
     margin-right: 18vw;
     margin-top: 5%;
 }
+    
+    section#emission_compare {
+    padding-top: 120%;
+}
+    
+/*
+span#main-activites {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+}
+*/
     
 }

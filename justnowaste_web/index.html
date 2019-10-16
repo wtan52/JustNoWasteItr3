@@ -52,7 +52,16 @@
                     <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/Reading.html" class="nav-link">E-Learning</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Analytics</a></li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graphs</a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/f1.html">Industrial Waste Trend</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/test_visual.html">Facilities Ranking</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,13 +80,14 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-10 align-items-end">
                                     <div class="form-group">
-                                        <div class="form-field">
-                                            <div class="ui-widget">
-                                                <input id="tags" type="text" name="mySuburb" class="form-control" placeholder="search suburb" required>
+                                        <div class="ui-widget">
+                                            <div class="form-field">
+                                                <input id="tags" type="text" name="mySuburb" class="form-control" placeholder="Eg:Clayton or 3168" required>
                                             </div>
                                             <button type="submit"><span class="ion-ios-search"></span></button>
                                         </div>
                                     </div>
+                                    <h6 style="color: white;font-weight: 900; display: none;" id="not-found">Suburb Not Found! Try Again</h6>
                                 </div>
                             </div>
                         </form>

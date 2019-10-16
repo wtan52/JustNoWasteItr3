@@ -17,7 +17,7 @@ function addResult(substance_name, category, colour, i, facility_id) {
     report.innerHTML = "View";
     report.id = i;
     report.onclick = function () {
-        window.location.href = "TrendGraph.html?facility_id=" + facility_id +"&substance="+ substance_name + "#emission_compare";
+        window.location.href = "TrendGraph.html?facility_id=" + facility_id + "&substance=" + substance_name + "#emission_compare";
     };
 
 
@@ -29,9 +29,11 @@ function addResult(substance_name, category, colour, i, facility_id) {
 
     tr.appendChild(nameTd);
     tr.appendChild(categoryTd);
-//    tr.appendChild(reportTd);
+    //    tr.appendChild(reportTd);
 
     results.appendChild(tr);
+    document.getElementById("loading-section").style.display = "none";
+    document.getElementById("CompanyInfoSection").style.display = "block";
 }
 
 function clearResults() {
@@ -50,8 +52,6 @@ function NPICompare(facility_id) {
         if (this.readyState == 4 && this.status == 200) {
 
             var datas = JSON.parse(this.responseText);
-
-            console.log(datas);
 
             var facility_Data = datas.facility;
             var NPI_Data = datas.NPI;
@@ -96,7 +96,7 @@ function NPICompare(facility_id) {
                     }
                 }
 
-                addResult(substance_arr[i], unique, colour , i, facility_id);
+                addResult(substance_arr[i], unique, colour, i, facility_id);
             }
 
 
@@ -106,6 +106,9 @@ function NPICompare(facility_id) {
     xhttp.open("GET", "/NPICompare?facility_id=" + facility_id, true);
     xhttp.send();
 }
+
+document.getElementById("loading-section").style.display = "block";
+document.getElementById("CompanyInfoSection").style.display = "none";
 
 var currentLocation = window.location;
 var url = new URL(currentLocation);

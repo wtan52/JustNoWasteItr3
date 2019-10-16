@@ -497,16 +497,22 @@
          if (suburbName.length == 0) {
              return false;
          }
-         alert("Suburb not Found");
+         document.getElementById("not-found").style.display = "block";
          return false;
-        
+
      }
 
  }
 
  $(document).ready(function () {
+
+     $("#tags").on('input',function(e){
+         document.getElementById("not-found").style.display = "none";
+     });
+
+
      $(function () {
-              var availableTags = ['Campbellfield 3061',
+         var availableTags = ['Campbellfield 3061',
             'Clayton South 3169',
             'Braeside 3195',
             'Merricks 3916',
@@ -983,14 +989,30 @@
             ];
          $("#tags").autocomplete({
              focus: function (event, ui) {
+                 console.log(this.value);
+                 console.log(ui.item.label);
                  this.value = ui.item.label;
-                 // or $('#autocomplete-input').val(ui.item.label);
+                 // $('#autocomplete-input').val(ui.item.label);
 
                  // Prevent the default focus behavior.
                  event.preventDefault();
                  // or return false;
              },
-             source: availableTags
+             source: function (request, response) {
+                 var tempLength = request.term.length;
+                 var matches = $.map(availableTags, function (acItem) {
+                     if (acItem.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
+                         return acItem;
+                     } else if (!isNaN(request.term)) {
+                         var resultsOut = acItem.indexOf(request.term.substring(tempLength - 4, tempLength));
+                         if (resultsOut != -1) {
+
+                             return acItem;
+                         }
+                     }
+                 });
+                 response(matches);
+             }
          });
      });
  });

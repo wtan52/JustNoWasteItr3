@@ -103,16 +103,20 @@ span#suburb-postcode,
 span#main-activites,
 span#anzsic-code,
 span#anzsic-name,
-span#reports-submitted {
+span#reports-submitted,{
     font-family: "Nunito Sans", Arial, sans-serif;
     background: #fff;
-    font-size: 16px;
     line-height: 1.8;
     font-weight: 400;
-    color: #666666;
+
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+    font-size: larger;
 }
 
- td, thead th {
+td,
+thead th {
     border-color: #ffffff;
     text-align: justify-all;
     display: table-cell;
@@ -125,19 +129,20 @@ img {
     height: 15%;
 }
 
-@media only screen and (min-width: 200px) and (max-width: 800px)  {
+@media only screen and (min-width: 200px) and (max-width: 800px) {
 
     #table-container {
         margin-left: 0vw;
         margin-right: 0vw;
         margin-top: 0%;
     }
-    
-     td, thead th {
-    border-color: #ffffff;
-    text-align: start;
-    display: table-cell;
-}
-    
-    
+
+    td,
+    thead th {
+        border-color: #ffffff;
+        text-align: start;
+        display: table-cell;
+    }
+
+
 }

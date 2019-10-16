@@ -40,6 +40,8 @@ function addResult(result, i) {
 
 
     };
+    btn.classList.add('btn');
+    btn.classList.add('btn-primary');
     icon.src = markerIcon;
     icon.setAttribute('class', 'placeIcon');
     icon.setAttribute('className', 'placeIcon');

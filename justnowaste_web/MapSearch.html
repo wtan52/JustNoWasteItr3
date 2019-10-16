@@ -48,7 +48,16 @@
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/Reading.html" class="nav-link">E-Learning</a></li>
                     <li class="nav-item"><a href="/#impacts-section" class="nav-link">Impacts</a></li>
-                    <li class="nav-item"><a href="Statistics.html" class="nav-link">Analytics</a></li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graphs</a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/f1.html">Industrial Waste Trend</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/test_visual.html">Facilities Ranking</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -104,24 +113,28 @@
         <div class="container">
             <div class="row d-flex mb-5 contact-info justify-content-center">
                 <div class="col-md-8">
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-lg btn-primary" onclick="ComapreNPI()" id="compare">Compare NPI Categories</button>
+                    </div>
                     <div class="row mb-5">
                         <div class="col-md-4 text-center py-4">
                             <div class="icon">
                                 <img src="/images/factory.svg" alt="company name">
                             </div>
-                            <p><span>Facility Name</span> <span id="facility-name"></span></p>
+                            <p><span>Facility Name</span> <span id="facility-name" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
+                            <a id="impact-button" class="btn btn-primary" href="/#impacts-section">view other facilities impact</a>
                         </div>
                         <div class="col-md-4 text-center border-height py-4">
                             <div class="icon">
                                 <img src="/images/company-sub.svg" alt="company code">
                             </div>
-                            <p><span>Suburb Postcode</span><span id="suburb-postcode"></span></p>
+                            <p><span>Suburb Postcode</span><span id="suburb-postcode" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
                         </div>
                         <div class="col-md-4 text-center py-4">
                             <div class="icon">
                                 <img src="/images/manufacture.svg" alt="company code">
                             </div>
-                            <p><span>Main Activites</span> <span id="main-activites"></span></p>
+                            <p><span>Main Activites</span> <span id="main-activites" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
                         </div>
                     </div>
                 </div>
@@ -133,19 +146,19 @@
                             <div class="icon">
                                 <img src="/images/puzzle.svg" alt="company code">
                             </div>
-                            <p><span>ANZSIC Code</span> <span id="anzsic-code"></span></p>
+                            <p><span>ANZSIC Code</span> <span id="anzsic-code" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
                         </div>
                         <div class="col-md-4 text-center border-height py-4">
                             <div class="icon">
                                 <img src="/images/identity.svg" alt="company code">
                             </div>
-                            <p><span>ANZSIC Name</span> <span id="anzsic-name"></span></p>
+                            <p><span>ANZSIC Name</span> <span id="anzsic-name" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
                         </div>
                         <div class="col-md-4 text-center py-4">
                             <div class="icon">
                                 <img src="/images/process.svg" alt="company code">
                             </div>
-                            <p><span>Reports Submitted</span> <span id="reports-submitted"></span></p>
+                            <p><span>Reports Submitted</span> <span id="reports-submitted" style="font-family: Nunito Sans, Arial, sans-serif; background: #fff; line-height: 1.8; font-weight: 400; font-size: 18px; color: #000000; font-weight: 700; font-size: larger;"></span></p>
                             <a id="dashboard" class="btn btn-primary">view historical reports</a>
                         </div>
                     </div>
@@ -161,17 +174,6 @@
                     </thead>
                     <tbody class="text-center" id="resultsNew"></tbody>
                 </table>
-                <div class="form-group text-center">
-                    <button type="button" class="btn btn-lg btn-primary" onclick="ComapreNPI()" id="compare">Compare NPI Categories</button>
-<!--
-                    <div class="row justify-content-between">
-                        <div>
-                            <button type="button" class="btn btn-lg btn-primary" onclick="search()" id="search">Search Another Facility</button>
-                            <button type="button" class="btn btn-lg btn-primary" onclick="ComapreNPI()" id="compare">Compare NPI Categories</button>
-                        </div>
-                    </div>
--->
-                </div>
             </div>
         </div>
     </section>
@@ -205,7 +207,7 @@
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mapSearch.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQy_bwD0oH6o3SnHqupWmrktig06Dy7og&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQy_bwD0oH6o3SnHqupWmrktig06Dy7og&libraries=places&callback=initMap" async defer></script>
 
 </body>
 

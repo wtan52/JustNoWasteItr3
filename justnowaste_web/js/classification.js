@@ -65,8 +65,11 @@ function classifications(target) {
                     var path_id = event.path[0].id;
                     console.log(parseInt(path_id))
                     console.log(subString_comp[parseInt(path_id)])
-                    window.location.href = "substance.html?facility_id=" + subString_comp[parseInt(path_id)].facility_id+"&company_name=" + subString_comp[parseInt(path_id)].facility_name+"#CompanyInfoSection";
+                    window.location.href = "substance.html?facility_id=" + subString_comp[parseInt(path_id)].facility_id + "&company_name=" + subString_comp[parseInt(path_id)].facility_name + "#CompanyInfoSection";
                 };
+
+                btn_td.classList.add('btn');
+                btn_td.classList.add('btn-primary');
 
                 var rank_name = document.createTextNode(i);
                 var facility_names = document.createTextNode(data[i].facility_name);
@@ -98,7 +101,7 @@ function classifications(target) {
 }
 
 function formatNumber(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
 

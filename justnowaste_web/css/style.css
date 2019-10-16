@@ -9582,9 +9582,12 @@ textarea.form-control {
 
 .contact-section .contact-info p span {
   display: block;
+/*
   font-size: 18px;
   font-weight: 600;
-  color: #000000; }
+  color: #000000; 
+*/
+}
 
 .contact-section .contact-info .icon span {
   font-size: 20px; }
@@ -9983,17 +9986,17 @@ img:hover {
 
 
 td#yellow {
-    background-color: yellow;
+    background-color: #eeee90fc;
     color: black;
 }
 
 td#green {
-    background-color: green;
-    color: white;
+    color: black;
+    background-color: #94d384;
 }
 
 td#red {
-    background-color: darkred;
+    background-color: lightcoralo;
     color: white;
 }
 span.ion-ios-search {
@@ -10001,6 +10004,29 @@ span.ion-ios-search {
 }
 button {
     cursor: pointer;
+}
+
+h1#loading {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span#facility-name,
+span#suburb-postcode,
+span#main-activites,
+span#anzsic-code,
+span#anzsic-name,
+span#reports-submitted,{
+    font-family: "Nunito Sans", Arial, sans-serif;
+    background: #fff;
+    line-height: 1.8;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+    font-size: larger;
 }
 
 
