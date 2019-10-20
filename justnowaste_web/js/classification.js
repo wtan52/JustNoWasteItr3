@@ -68,9 +68,6 @@ function classifications(target) {
                     window.location.href = "substance.html?facility_id=" + subString_comp[parseInt(path_id)].facility_id + "&company_name=" + subString_comp[parseInt(path_id)].facility_name + "#CompanyInfoSection";
                 };
 
-                btn_td.classList.add('btn');
-                btn_td.classList.add('btn-primary');
-
                 var rank_name = document.createTextNode(i);
                 var facility_names = document.createTextNode(data[i].facility_name);
 
